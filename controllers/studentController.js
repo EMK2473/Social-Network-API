@@ -83,7 +83,7 @@ const ThoughtController = {
         { $pull: { reactions: { reactionId: req.params.reactionId } } },
         { runValidators: true, new: true }
       );
-
+      
       thought ? res.json(thought) : res.status(404).json({ message: notFound });
     } catch (e) {
       res.status(500).json(e);
