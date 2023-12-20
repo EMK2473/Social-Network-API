@@ -1,5 +1,4 @@
-const { Thought, User, Reaction } = require("../models");
-const { Types } = require("mongoose");
+const { Thought } = require("../models");
 
 const ThoughtController = {
   async getAllThoughts(req, res) {
@@ -71,8 +70,8 @@ const ThoughtController = {
         { runValidators: true, new: true }
       );
       thought ? res.json(thought) : res.status(404).json({ message: notFound });
-    } catch (e) {
-      res.status(500).json(e);
+    } catch (err) {
+      res.status(500).json(err);
     }
   },
 
@@ -85,8 +84,8 @@ const ThoughtController = {
       );
       
       thought ? res.json(thought) : res.status(404).json({ message: notFound });
-    } catch (e) {
-      res.status(500).json(e);
+    } catch (err) {
+      res.status(500).json(err);
     }
   },
 };

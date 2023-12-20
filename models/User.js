@@ -13,8 +13,8 @@ const userSchema = new Schema(
         unique: true,
         // regex email validation
         validate: { 
-          validator: function(v) {
-              return /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(v);
+          validator: function(email) {
+              return /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(email);
           }
       }
     },
