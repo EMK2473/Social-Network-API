@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 const UserController = {
   getAllUsers: async (req, res) => {
@@ -49,7 +49,10 @@ const UserController = {
       const userData = await User.findOneAndDelete({ _id: req.params.userId });
       if (!userData) {
         return res.status(404).json({ message: 'User not found' });
-      }
+      } 
+      const userThoughts = await Thought.deleteMany({
+        username: userData.username,
+      }); 
       res.json({ message: 'User deleted successfully' });
     } catch (err) {
       res.status(500).json(err);
