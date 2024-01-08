@@ -31,7 +31,7 @@ const UserController = {
   updateUserById: async (req, res) => {
     try {
       const userData = await User.findOneAndUpdate(
-        { _id: req.params.id },
+        { _id: req.params.userId },
         req.body,
         { new: true }
       );
@@ -46,7 +46,7 @@ const UserController = {
 
   deleteUserById: async (req, res) => {
     try {
-      const userData = await User.findOneAndDelete({ _id: req.params.id });
+      const userData = await User.findOneAndDelete({ _id: req.params.userId });
       if (!userData) {
         return res.status(404).json({ message: 'User not found' });
       }
